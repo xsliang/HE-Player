@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyMp3Player
@@ -16,10 +9,6 @@ namespace MyMp3Player
         List<PlayItem> items = new List<PlayItem>();
 
         string[] files, path;
-
-        bool isPlaying = false;
-
-        bool NeedDoItAgain = false;
 
         public FormMain()
         {
@@ -35,27 +24,15 @@ namespace MyMp3Player
                 case 0:    // Undefined
                     //currentStateLabel.Text = "Undefined";
                     break;
-                case 1:    // Stopped
-                    if (listBoxPlayerItems.SelectedIndex + 1 < listBoxPlayerItems.Items.Count)
-                    {
-                        listBoxPlayerItems.SelectedIndex = listBoxPlayerItems.SelectedIndex + 1;
-                    }
-                    else if (NeedDoItAgain == true)
-                    {
-                        listBoxPlayerItems_SelectedIndexChanged(null, null);
-                    }
+                case (int)WMPLib.WMPPlayState.wmppsStopped:
+                        PlayItem();
                     break;
 
                 case 2:    // Paused
                     //currentStateLabel.Text = "Paused";
                     break;
 
-                case 3:    // Playing
-                    if (isPlaying == true)
-                    {
-                        isPlaying = false;
-                        NeedDoItAgain = false;
-                    }
+                case (int)WMPLib.WMPPlayState.wmppsPlaying:
                     break;
 
                 case 4:    // ScanForward
@@ -74,7 +51,11 @@ namespace MyMp3Player
                     //currentStateLabel.Text = "Waiting";
                     break;
 
-                case 8:    // MediaEnded
+                case (int)WMPLib.WMPPlayState.wmppsMediaEnded:
+                    if (listBoxPlayerItems.SelectedIndex + 1 < listBoxPlayerItems.Items.Count)
+                    {
+                        listBoxPlayerItems.SelectedIndex = listBoxPlayerItems.SelectedIndex + 1;
+                    }
                     break;
 
                 case 9:    // Transitioning
@@ -111,12 +92,7 @@ namespace MyMp3Player
 
         private void listBoxPlayerItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxPlayerItems.SelectedIndex != -1)
-            {
-                isPlaying = false;
-                NeedDoItAgain = true;
-                axWindowsMediaPlayer.URL = listBoxPlayerItems.SelectedValue.ToString();
-            }
+
         }
 
         private void openFolderFToolStripMenuItem_Click(object sender, EventArgs e)
@@ -144,6 +120,19 @@ namespace MyMp3Player
                     listBoxPlayerItems.DataSource = items;
                     listBoxPlayerItems.SelectedIndexChanged += listBoxPlayerItems_SelectedIndexChanged;
                 }
+            }
+        }
+
+        private void listBoxPlayerItems_DoubleClick(object sender, EventArgs e)
+        {
+            PlayItem();
+        }
+
+        private void PlayItem()
+        {
+            if (listBoxPlayerItems.SelectedIndex != -1)
+            {
+                axWindowsMediaPlayer.URL = listBoxPlayerItems.SelectedValue.ToString();
             }
         }
 

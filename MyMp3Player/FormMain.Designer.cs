@@ -32,26 +32,26 @@
             this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.panelList = new System.Windows.Forms.Panel();
+            this.listBoxPlayerItems = new System.Windows.Forms.ListBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFolderFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.settingSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.panelList = new System.Windows.Forms.Panel();
-            this.listBoxPlayerItems = new System.Windows.Forms.ListBox();
-            this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFolderFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip.SuspendLayout();
             this.panelList.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // axWindowsMediaPlayer
@@ -94,6 +94,27 @@
             this.progressBar.Size = new System.Drawing.Size(568, 34);
             this.progressBar.TabIndex = 1;
             // 
+            // panelList
+            // 
+            this.panelList.Controls.Add(this.listBoxPlayerItems);
+            this.panelList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelList.Location = new System.Drawing.Point(3, 203);
+            this.panelList.Name = "panelList";
+            this.panelList.Size = new System.Drawing.Size(568, 54);
+            this.panelList.TabIndex = 2;
+            // 
+            // listBoxPlayerItems
+            // 
+            this.listBoxPlayerItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxPlayerItems.FormattingEnabled = true;
+            this.listBoxPlayerItems.ItemHeight = 12;
+            this.listBoxPlayerItems.Location = new System.Drawing.Point(0, 0);
+            this.listBoxPlayerItems.Name = "listBoxPlayerItems";
+            this.listBoxPlayerItems.Size = new System.Drawing.Size(568, 54);
+            this.listBoxPlayerItems.TabIndex = 0;
+            this.listBoxPlayerItems.SelectedIndexChanged += new System.EventHandler(this.listBoxPlayerItems_SelectedIndexChanged);
+            this.listBoxPlayerItems.DoubleClick += new System.EventHandler(this.listBoxPlayerItems_DoubleClick);
+            // 
             // statusStrip
             // 
             this.statusStrip.Location = new System.Drawing.Point(0, 330);
@@ -134,17 +155,41 @@
             this.openToolStripMenuItem.Text = "Open File(&O)...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
+            // openFolderFToolStripMenuItem
+            // 
+            this.openFolderFToolStripMenuItem.Name = "openFolderFToolStripMenuItem";
+            this.openFolderFToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.openFolderFToolStripMenuItem.Text = "Open Folder(&F)...";
+            this.openFolderFToolStripMenuItem.Click += new System.EventHandler(this.openFolderFToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(172, 6);
+            // 
+            // settingSToolStripMenuItem
+            // 
+            this.settingSToolStripMenuItem.Name = "settingSToolStripMenuItem";
+            this.settingSToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.settingSToolStripMenuItem.Text = "Setting(&T)...";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(172, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.exitToolStripMenuItem.Text = "Exit(&X)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // statisticsToolStripMenuItem
+            // 
+            this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.statisticsToolStripMenuItem.Text = "Statistics(&S)";
             // 
             // helpHToolStripMenuItem
             // 
@@ -157,57 +202,13 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.aboutToolStripMenuItem.Text = "About(&A)";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // panelList
-            // 
-            this.panelList.Controls.Add(this.listBoxPlayerItems);
-            this.panelList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelList.Location = new System.Drawing.Point(3, 203);
-            this.panelList.Name = "panelList";
-            this.panelList.Size = new System.Drawing.Size(568, 54);
-            this.panelList.TabIndex = 2;
-            // 
-            // listBoxPlayerItems
-            // 
-            this.listBoxPlayerItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxPlayerItems.FormattingEnabled = true;
-            this.listBoxPlayerItems.ItemHeight = 12;
-            this.listBoxPlayerItems.Location = new System.Drawing.Point(0, 0);
-            this.listBoxPlayerItems.Name = "listBoxPlayerItems";
-            this.listBoxPlayerItems.Size = new System.Drawing.Size(568, 54);
-            this.listBoxPlayerItems.TabIndex = 0;
-            this.listBoxPlayerItems.SelectedIndexChanged += new System.EventHandler(this.listBoxPlayerItems_SelectedIndexChanged);
-            // 
-            // statisticsToolStripMenuItem
-            // 
-            this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.statisticsToolStripMenuItem.Text = "Statistics(&S)";
-            // 
-            // settingSToolStripMenuItem
-            // 
-            this.settingSToolStripMenuItem.Name = "settingSToolStripMenuItem";
-            this.settingSToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.settingSToolStripMenuItem.Text = "Setting(&T)...";
-            // 
-            // openFolderFToolStripMenuItem
-            // 
-            this.openFolderFToolStripMenuItem.Name = "openFolderFToolStripMenuItem";
-            this.openFolderFToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.openFolderFToolStripMenuItem.Text = "Open Folder(&F)...";
-            this.openFolderFToolStripMenuItem.Click += new System.EventHandler(this.openFolderFToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(172, 6);
             // 
             // FormMain
             // 
@@ -223,9 +224,9 @@
             this.Text = "My Mp3 Player";
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panelList.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.panelList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
